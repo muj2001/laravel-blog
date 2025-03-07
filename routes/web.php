@@ -31,9 +31,10 @@ Route::get('/', function () {
 });
 
 Route::get('/posts/{post}', function ($slug) {
+    $post = Post::where('slug', $slug)->first();
     // Trying to find a post using postName, and then render view with that post.
     return view('post', [
-        'post' => Post::findOrFail($slug)
+        'post' => $post
     ]);
     // if (!file_exists($path = __DIR__ . "/../resources/posts/{$postName}.html")) {
     //     // return redirect("/");

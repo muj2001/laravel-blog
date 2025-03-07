@@ -5,8 +5,8 @@
                 <a href="posts/{{ $post->slug }}">{{ $post->title }}</a>
             </h1>
             <p>
-                {{ $post->excerpt }}.. 
+                {{ $post->excerpt }}
             </p>
         </article>
-    @endforeach;
+    @endforeach
 </x-layout>
