@@ -32,14 +32,9 @@ Route::get('/', function () {
 
 Route::get('/posts/{post}', function ($slug) {
     // Trying to find a post using postName, and then render view with that post.
-
-    if ($post = Post::find($slug)) {
-        return view('post', [
-            'post' => $post
-        ]); 
-    } else {
-        abort(404);
-    };
+    return view('post', [
+        'post' => Post::findOrFail($slug)
+    ]);
     // if (!file_exists($path = __DIR__ . "/../resources/posts/{$postName}.html")) {
     //     // return redirect("/");
     //     dd("file does not exist!"); // DUMP AND DIE ddd does not exist anymore
@@ -55,7 +50,7 @@ Route::get('/posts/{post}', function ($slug) {
     // return view('post', [
     //     'post'=> $post
     // ]);
-})->where('post','[A-z_\-]+');
+});
 
 Route::get('/test-json', function () {
     return ["name" => "Usman Jehangir" ];
